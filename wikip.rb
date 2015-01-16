@@ -3,8 +3,9 @@ require 'open-uri'
 require 'json'
 
 VALUES = {"201401" => {'jurassic park' => 15165,'american football' => 145408,'bank' => 73418,'netflix' => 234251,'opec' => 46222,'ruth bader ginsburg' => 23749,'npr' => 20167,'silicon valley' => 77166,'barack obama' => 595065,'assassination_of_john_f._kennedy' => 107125,'taylor swift' => 428774,'count dracula' => 37016,'comet' => 52961,'giant clam' => 8611,'mitch mcconnell' => 18023,'republican party (united states)' => 113100,'democratic party (united states)' => 97334,"murphy's law" => 73927,'eiffel tower' => 186085,'general motors' => 85661,'reese witherspoon' => 150100,'katy perry' => 497794,'stephen hawking' => 502288,'eclipse' => 29091,'iran' => 195041,'fidel castro' => 158046,'mila kunis' => 315193,'angela merkel' => 84254,'jesus' => 240102,'moon' => 191804,'oculus rift' => 106792,'exxonmobil' => 41486,'kim jong-un' => 250599,'wichita' => 3767,'lithuania' => 118205,'guantanamo bay naval base' => 25719,'antonin scalia' => 24949,'bob dylan' => 218243,'benedict cumberbatch' => 1008861,'stephen colbert' => 73017,'hydraulic fracturing' => 127227,'asteroid' => 48383,'hillary rodham clinton' => 139880,'israel' => 305762,'quantitative easing' => 68083,'electronic cigarette' => 187610,'international space station' => 125999,'beck' => 79689,'michael keaton' => 95131,'green day' => 120669,'petroleum' => 96078,'google' => 705167,'veto' => 16652,'iraq' => 111047,'japan' => 413432,'clint eastwood' => 214626,'apple inc.' => 291177,'eminem' => 673892,'chicago blackhawks' => 40469,'nascar' => 34027,'snow' => 73694,'tesla motors' => 94506,'fox news channel' => 42970,'africa' => 191277,'walmart' => 112050,'catherine, duchess of cambridge' => 99729,'central intelligence agency' => 83513,'spongebob squarepants' => 165060,'liam neeson' => 227999,'el niño' => 53253,'koch industries' => 43052,'john boehner' => 80089,'ebola' => 10523,'pope francis' => 211242,'bashar al-assad' => 81869,'facebook' => 2270399,'patient protection and affordable care act' => 125412,'deaths in 2015' => 1641908,'fifty shades of grey' => 300877,'julianne moore' => 179514},
-          "201501" => {"taylor swift" => 294129,"count dracula" => 11128,"comet" => 20901,"giant clam" => 3708,"mitch mcconnell" => 19646,"republican party (united states)" => 46097,"democratic party (united states)" => 39373,"murphy's law" => 26688,"eiffel tower" => 73499,"general motors" => 33055,"reese witherspoon" => 81384,"katy perry" => 107218,"stephen hawking" => 464261,"eclipse" => 8635,"iran" => 80958,"fidel castro" => 85408,"mila kunis" => 154099,"angela merkel" => 46277,"jesus" => 94774,"moon" => 57597,"fifty shades of grey" => 161515,"julianne moore" => 96853,"oculus rift" => 39820,"exxonmobil" => 17640,"kim jong-un" => 215099,"wichita" => 1103,"lithuania" => 69955,"antonin scalia" => 8880,"guantanamo bay naval base" => 13168,"bob dylan" => 73808,"jurassic park" => 17618,"american football" => 46488,"bank" => 49146,"netflix" => 96669,"opec" => 57596,"ruth bader ginsburg" => 11138,"npr" => 9042,"silicon valley" => 38530,"barack obama" => 198328,"assassination_of_john_f._kennedy" => 31850,"benedict cumberbatch" => 232255,"stephen colbert" => 45055,"hydraulic fracturing" => 43304,"asteroid" => 15775,"hillary rodham clinton" => 46984,"israel" => 132293,"quantitative easing" => 31280,"electronic cigarette" => 30258,"international space station" => 62464,"beck" => 23633,"michael keaton" => 250082,"green day" => 41774,"petroleum" => 44899,"google" => 438707,"veto" => 11207,"iraq" => 50129,"japan" => 150043,"clint eastwood" => 114455,"apple inc." => 102616,"eminem" => 181321,"chicago blackhawks" => 14233,"nascar" => 11759,"snow" => 20626,"tesla motors" => 59462,"fox news channel" => 26563,"africa" => 63707,"deaths in 2015" => 760693,"walmart" => 43141,"catherine, duchess of cambridge" => 42344,"central intelligence agency" => 43610,"spongebob squarepants" => 49186,"liam neeson" => 229266,"el niño" => 18645,"koch industries" => 16385,"john boehner" => 37783,"ebola" => 13247,"pope francis" => 146701,"bashar al-assad" => 37109,"facebook" => 608818,"patient protection and affordable care act" => 38416}
+          "201501" => {"taylor swift" => 314733,"count dracula" => 11853,"comet" => 22655,"giant clam" => 4851,"mitch mcconnell" => 20555,"republican party (united states)" => 49819,"democratic party (united states)" => 42618,"murphy's law" => 28762,"eiffel tower" => 79121,"general motors" => 35714,"reese witherspoon" => 92277,"katy perry" => 114601,"stephen hawking" => 509985,"eclipse" => 9356,"iran" => 87363,"fidel castro" => 91242,"mila kunis" => 161065,"angela merkel" => 49990,"jesus" => 101307,"moon" => 65640,"fifty shades of grey" => 175778,"julianne moore" => 110232,"oculus rift" => 42562,"exxonmobil" => 19226,"kim jong-un" => 232222,"wichita" => 1230,"lithuania" => 74242,"antonin scalia" => 9680,"guantanamo bay naval base" => 15375,"bob dylan" => 79216,"jurassic park" => 18512,"american football" => 51369,"bank" => 52755,"netflix" => 103005,"opec" => 62726,"ruth bader ginsburg" => 11907,"npr" => 9778,"silicon valley" => 41455,"barack obama" => 215144,"assassination_of_john_f._kennedy" => 35040,"benedict cumberbatch" => 254769,"stephen colbert" => 47630,"hydraulic fracturing" => 46864,"asteroid" => 17160,"hillary rodham clinton" => 50713,"israel" => 145724,"quantitative easing" => 35781,"electronic cigarette" => 32576,"international space station" => 70602,"beck" => 25344,"michael keaton" => 277198,"green day" => 44833,"petroleum" => 48607,"google" => 471538,"veto" => 11946,"iraq" => 54099,"japan" => 161598,"clint eastwood" => 126204,"apple inc." => 112029,"eminem" => 193775,"chicago blackhawks" => 15094,"nascar" => 12672,"snow" => 21992,"tesla motors" => 63900,"fox news channel" => 28868,"africa" => 69652,"deaths in 2015" => 816276,"walmart" => 47680,"catherine, duchess of cambridge" => 45503,"central intelligence agency" => 46257,"spongebob squarepants" => 52475,"liam neeson" => 243535,"el niño" => 20150,"koch industries" => 17607,"john boehner" => 40319,"ebola" => 14395,"pope francis" => 175476,"bashar al-assad" => 39920,"facebook" => 647170,"patient protection and affordable care act" => 41479}
           }
+
 
 
 TEAMS = { "Giant Clam" => ["taylor swift", "count dracula", "comet", "giant clam", "mitch mcconnell", "republican party (united states)", "democratic party (united states)", "murphy's law", "eiffel tower", "general motors"],
@@ -29,7 +30,7 @@ def views_for_article(article, year, month, display = false)
     content = open(URI.encode("http://stats.grok.se/json/en/#{year}#{month}/#{article}")).read
     views = JSON.parse(content)["daily_views"].values.inject(:+)
   end
-  puts "\"#{article}\" => #{views}," if display
+  print "\"#{article}\" => #{views}," if display
   views
 end
 
@@ -41,7 +42,7 @@ def get_updated_projections
   end
 end
 
-MONTH_ADJUSTMENT = 31.0 / 14
+MONTH_ADJUSTMENT = 31.0 / 15
 
 def display_projected_values
   puts "article name, this year views, projected this year views, last year views, projected ratio, projected points"
@@ -53,15 +54,20 @@ def display_projected_values
       this_year_projected = this_year * MONTH_ADJUSTMENT
       last_year = views_for_article(article,'2014','01')
       ratio = (this_year_projected / last_year).round(3)
-      points = 0
-      SCORING.each do |k,v|
-        points = v if ratio > k
-      end
+      points = determine_points(ratio)
       team_score += points if index < 8
       puts "#{article}, #{this_year.to_i}, #{this_year_projected.to_i}, #{last_year}, #{ratio}, #{points}"
     end
     puts "team score: #{team_score}"
   end
+end
+
+def determine_points(ratio)
+  output = 0
+  SCORING.each do |k,v|
+    output = v if ratio > k
+  end
+  output
 end
 
 display_projected_values
