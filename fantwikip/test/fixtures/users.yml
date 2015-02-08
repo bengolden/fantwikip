@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: articles
+# Table name: users
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)

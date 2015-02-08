@@ -1,0 +1,26 @@
+<h1><%= @league.name %></h1>
+
+<h3>Standings</h3>
+
+<table class="standings">
+	<tr>
+		<td class="standings-header">Team name</td>
+		<% @league.league_time_periods.each do |p| %>
+			<td class="standings-header"><%= p.time_period.name %></td>
+		<% end %>
+		<td class="standings-header">Total</td>
+	</tr>
+
+	<% @league.teams.sort_by(&:points).reverse.each do |team| %>
+	<tr>
+		<td><%= link_to(team.name,team) %></td>
+		<% @league.league_time_periods.each do |p| %>
+			<td><%= team.lineups.where(time_period_id: p.id).first.points if team.lineups.where(time_period_id: p.id).present? %></td>
+		<% end %>
+		<td><%= team.points %></td>
+	</tr>
+	<% end %>
+
+</table>
+
+<h5>Last updated: <%= @league.lineup_articles.order('updated_at desc').first.updated_at %></h5>
