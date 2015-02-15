@@ -13,4 +13,8 @@ class League < ActiveRecord::Base
 	has_many :teams, dependent: :destroy
 	has_many :lineups, through: :teams
 	has_many :lineup_articles, through: :lineups
+
+	def last_updated_at
+		self.lineup_articles.order('updated_at desc').first.updated_at
+	end
 end
