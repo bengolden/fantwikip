@@ -1,18 +1,19 @@
 # == Schema Information
 #
-# Table name: teams
+# Table name: time_periods
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
-#  owner_id   :string(255)
-#  league_id  :integer
+#  duration   :string(255)
+#  start_date :date
+#  end_date   :date
 #  created_at :datetime
 #  updated_at :datetime
 #
 
 require 'test_helper'
 
-class TeamTest < ActiveSupport::TestCase
+class TimePeriodTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

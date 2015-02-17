@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: articles
+# Table name: users
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -8,7 +8,5 @@
 #  updated_at :datetime
 #
 
-class Article < ActiveRecord::Base
-  belongs_to :team
-  has_many :lineup_articles
+class User < ActiveRecord::Base
 end
