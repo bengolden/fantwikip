@@ -131,4 +131,12 @@ end
 # display_free_agent_scores
 
 # get_updated_projections
-display_team_scores
+# display_team_scores
+
+VALUES.each do |k,v|
+  puts k
+  TEAMS["Farticles"].each do |a|
+    puts a
+    puts v[a]
+  end
+end

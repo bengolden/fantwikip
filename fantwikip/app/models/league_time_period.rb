@@ -13,4 +13,5 @@
 class LeagueTimePeriod < ActiveRecord::Base
 	belongs_to :league
 	belongs_to :time_period
+
 end

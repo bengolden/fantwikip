@@ -10,6 +10,7 @@
 
 class League < ActiveRecord::Base
 	has_many :league_time_periods, dependent: :destroy
+  has_many :time_periods, through: :league_time_periods
 	has_many :teams, dependent: :destroy
 	has_many :lineups, through: :teams
 	has_many :lineup_articles, through: :lineups
@@ -17,4 +18,10 @@ class League < ActiveRecord::Base
 	def last_updated_at
 		self.lineup_articles.order('updated_at desc').first.updated_at
 	end
+
+  def update_article_counts
+    self.lineups.select(&:active).each do |period|
+      
+    end
+  end
 end
