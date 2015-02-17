@@ -1,0 +1,36 @@
+<h3><%= link_to("Back to league page",@team.league)%></h3>
+<h1><%= @team.name %></h1>
+<h4>Owned by: <%= @team.owner.name %></h4>
+
+<table>
+	<tr>
+		<% @team.lineups.each do |l| %>
+			<td colspan = 3><%= l.time_period.name %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<% @team.lineups.each do |l| %>
+			<td>name</td>
+			<td>views<%= " (projected)" if l.active? %></td>
+			<td>points<%= " (projected)" if l.active? %></td>
+		<% end %>
+	</tr>
+	<% @team.lineups.first.lineup_articles.count.times do |i|%>
+		<tr>
+			<% @team.lineups.each do |l| %>
+				<td><%= l.lineup_articles[i].article.name %></td>
+				<td><%= number_with_delimiter(l.lineup_articles[i].views || 0, delimiter: ",") %></td>
+				<td><%= l.lineup_articles[i].points || 0 %></td>
+			<% end %>
+		</tr>
+	<% end %>
+	<tr>
+		<% @team.lineups.each do |l| %>
+			<td>Total</td>
+			<td></td>
+			<td><%= l.points %></td>
+		<% end %>
+		<td><%= @team.points %></td>
+	</tr>
+	
+</table>

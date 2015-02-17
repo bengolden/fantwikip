@@ -11,27 +11,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115221342) do
+ActiveRecord::Schema.define(version: 20150208152742) do
 
   create_table "articles", force: true do |t|
-    t.integer  "team_id"
     t.string   "name"
-    t.integer  "jan_2014_views"
-    t.integer  "feb_2014_views"
-    t.integer  "mar_2014_views"
-    t.integer  "jan_2015_views"
-    t.integer  "feb_2015_views"
-    t.integer  "mar_2015_views"
-    t.integer  "jan_2015_projected_views"
-    t.integer  "feb_2015_projected_views"
-    t.integer  "mar_2015_projected_views"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "league_time_periods", force: true do |t|
+    t.integer  "league_id"
+    t.integer  "time_period_id"
+    t.float    "scoring_weight", default: 1.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "leagues", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lineup_articles", force: true do |t|
+    t.integer  "lineup_id"
+    t.integer  "article_id"
+    t.integer  "last_year_views"
+    t.integer  "views"
+    t.integer  "days_passed"
+    t.float    "points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lineups", force: true do |t|
+    t.integer  "time_period_id"
+    t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "teams", force: true do |t|
     t.string   "name"
-    t.string   "owner"
+    t.string   "owner_id"
+    t.integer  "league_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "time_periods", force: true do |t|
+    t.string   "name"
+    t.string   "duration"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
