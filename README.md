@@ -1,6 +1,4 @@
 # fantwikip
 Fantasy Wikipedia Apps
 
-This is pretty hacky right now.  To run, you want to zero out line 5, then run the method get_updated_projections and paste the output into line 5, adjust the MONTH_ADJUSTMENT on line 41, and then run display_projected values.
-
-I will try to make this less hacky over time.
+Working on a proper rails app, but for now you can pull scores using the file wikip.rb.  The method get_updated_projections will pull data from stats.grok.se and print in a hash format, which can replace the data saved in VALUES.  The method display_team_scores shows standings and team breakdowns.

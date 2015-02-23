@@ -24,4 +24,12 @@ class League < ActiveRecord::Base
       
     end
   end
+	# def update_article_counts
+	# 	if update_available?
+	# 		self.lineups.active?.each do |lineup|
+	# 			lineup.update_articles
+	# 		end
+	# 	end
+	# end
+
 end

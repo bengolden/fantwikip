@@ -14,6 +14,13 @@ class Lineup < ActiveRecord::Base
   belongs_to :time_period
   has_many :lineup_articles
 
+  def update_lineup_article_views
+    self.lineup_articles.each do |lineup_article|
+      lineup_article.update_views
+    end
+  end
+
+
   def points
   	self.lineup_articles.pluck(:points).inject(:+)
   end
@@ -25,4 +32,17 @@ class Lineup < ActiveRecord::Base
   def expired?
   	self.time_period.expired?
   end
+
+  def time_period_duration
+    self.time_period.duration
+  end
+
+  def year
+    self.time_period.start_date.year
+  end
+
+  def month
+    self.time_period.start_date.month if time_period_duration == "month"
+  end
+
 end
