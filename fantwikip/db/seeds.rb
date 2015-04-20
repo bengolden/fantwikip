@@ -1,39 +1,39 @@
 # create league
-league = League.create(name: "Pilot league")
+league = League.create!(name: "Pilot league")
 
 # create users
-user1 = User.create(name: "bg")
-user2 = User.create(name: "ja")
-user3 = User.create(name: "ed")
-user4 = User.create(name: "ck")
-user5 = User.create(name: "kd")
-user6 = User.create(name: "la")
-user7 = User.create(name: "ds")
-user8 = User.create(name: "mm")
+user1 = User.create!(name: "bg")
+user2 = User.create!(name: "ja")
+user3 = User.create!(name: "ed")
+user4 = User.create!(name: "ck")
+user5 = User.create!(name: "kd")
+user6 = User.create!(name: "la")
+user7 = User.create!(name: "ds")
+user8 = User.create!(name: "mm")
 
 # assign teams to users and league
-league.teams << [Team.create(owner_id: user1.id, name: "Farticles"),
-								 Team.create(owner_id: user2.id, name: "Hot Chicks & Jesus"),
-								 Team.create(owner_id: user3.id, name: "The Google, The Veto, and the Mr. Mom"),
-								 Team.create(owner_id: user4.id, name: "E-Cigs in space"),
-								 Team.create(owner_id: user5.id, name: "Wiki Wiki What?"),
-								 Team.create(owner_id: user6.id, name: "50 Shades of Wiki"),
-								 Team.create(owner_id: user7.id, name: "D's Asters"),
-								 Team.create(owner_id: user8.id, name: "Giant Clam")]
+league.teams << [Team.create!(owner_id: user1.id, name: "Farticles"),
+								 Team.create!(owner_id: user2.id, name: "Hot Chicks & Jesus"),
+								 Team.create!(owner_id: user3.id, name: "The Google, The Veto, and the Mr. Mom"),
+								 Team.create!(owner_id: user4.id, name: "E-Cigs in space"),
+								 Team.create!(owner_id: user5.id, name: "Wiki Wiki What?"),
+								 Team.create!(owner_id: user6.id, name: "50 Shades of Wiki"),
+								 Team.create!(owner_id: user7.id, name: "D's Asters"),
+								 Team.create!(owner_id: user8.id, name: "Giant Clam")]
 
 # assign time periods to league
-jan = TimePeriod.create(name: "January", duration: "month", start_date: Date.new(2015,1,1), end_date: Date.new(2015,1,31))
-feb = TimePeriod.create(name: "February", duration: "month", start_date: Date.new(2015,2,1), end_date: Date.new(2015,2,28))
-mar = TimePeriod.create(name: "March", duration: "month", start_date: Date.new(2015,3,1), end_date: Date.new(2015,3,31))
+jan = TimePeriod.create!(name: "January", duration: "month", start_date: Date.new(2015,1,1), end_date: Date.new(2015,1,31))
+feb = TimePeriod.create!(name: "February", duration: "month", start_date: Date.new(2015,2,1), end_date: Date.new(2015,2,28))
+mar = TimePeriod.create!(name: "March", duration: "month", start_date: Date.new(2015,3,1), end_date: Date.new(2015,3,31))
 
-league.league_time_periods << [LeagueTimePeriod.create(time_period_id: jan.id, scoring_weight: 1),
-															 LeagueTimePeriod.create(time_period_id: feb.id, scoring_weight: 1.5),
-																LeagueTimePeriod.create(time_period_id: mar.id, scoring_weight: 2)]
+league.league_time_periods << [LeagueTimePeriod.create!(time_period_id: jan.id, scoring_weight: 1),
+															 LeagueTimePeriod.create!(time_period_id: feb.id, scoring_weight: 1.5),
+																LeagueTimePeriod.create!(time_period_id: mar.id, scoring_weight: 2)]
 
 # create articles
 article_names = ["michael keaton","ebola","opec","jurassic park","pope francis","stephen hawking","guantanamo bay naval base","mitch mcconnell","liam neeson","quantitative easing","ruth bader ginsburg","clint eastwood","fifty shades of grey","kim jong-un","veto","tesla motors","fox news channel","taylor swift","google","central intelligence agency","julianne moore","koch industries","reese witherspoon","john boehner","bank","stephen colbert","barack obama","lithuania","silicon valley","fidel castro","angela merkel","iraq","israel","petroleum","npr","giant clam","international space station","bashar al-assad","deaths in 2015","antonin scalia","iran","republican party (united states)","exxonmobil","democratic party (united states)","catherine, duchess of cambridge","moon","walmart","netflix","oculus rift","general motors","asteroid","apple inc.","comet","mila kunis","eiffel tower","murphy\'s law","bob dylan","japan","el niño","nascar","africa","jesus","hillary rodham clinton","wichita","green day","american football","spongebob squarepants","count dracula","chicago blackhawks","hydraulic fracturing","assassination_of_john_f._kennedy","eclipse","patient protection and affordable care act","beck","snow","eminem","facebook","katy perry","benedict cumberbatch","electronic cigarette"]
 article_names.each do |an|
-	Article.create(name: an)
+	Article.create!(name: an)
 end
 
 # create lineups
@@ -52,74 +52,74 @@ def determine_points(ratio)
   output
 end
 
-fart1 = Team.find_by_name("Farticles").lineups.create(time_period_id: jan.id)
+fart1 = Team.find_by_name("Farticles").lineups.create!(time_period_id: jan.id)
 ["jurassic park", "american football", "bank", "netflix", "opec", "ruth bader ginsburg", "npr", "silicon valley"].each do |art|
-	fart1.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
+	fart1.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
 end
-fart2 = Team.find_by_name("Farticles").lineups.create(time_period_id: feb.id)
+fart2 = Team.find_by_name("Farticles").lineups.create!(time_period_id: feb.id)
 ["jurassic park", "american football", "bank", "barack obama", "opec", "ruth bader ginsburg", "npr", "silicon valley"].each do |art|
-	fart2.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
+	fart2.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
 end
 
-clam1 = Team.find_by_name("Giant Clam").lineups.create(time_period_id: jan.id)
+clam1 = Team.find_by_name("Giant Clam").lineups.create!(time_period_id: jan.id)
 ["taylor swift", "count dracula", "comet", "giant clam", "mitch mcconnell", "republican party (united states)", "democratic party (united states)", "murphy's law"].each do |art|
-	clam1.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
+	clam1.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
 end
-clam2 = Team.find_by_name("Giant Clam").lineups.create(time_period_id: feb.id)
+clam2 = Team.find_by_name("Giant Clam").lineups.create!(time_period_id: feb.id)
 ["taylor swift", "count dracula", "comet", "giant clam", "mitch mcconnell", "republican party (united states)", "democratic party (united states)", "murphy's law"].each do |art|
-	clam2.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
+	clam2.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
 end
 
-jesu1 = Team.find_by_name("Hot Chicks & Jesus").lineups.create(time_period_id: jan.id)
+jesu1 = Team.find_by_name("Hot Chicks & Jesus").lineups.create!(time_period_id: jan.id)
 ["reese witherspoon", "katy perry", "stephen hawking", "eclipse", "iran", "fidel castro", "mila kunis", "angela merkel"].each do |art|
-	jesu1.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
+	jesu1.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
 end
-jesu2 = Team.find_by_name("Hot Chicks & Jesus").lineups.create(time_period_id: feb.id)
+jesu2 = Team.find_by_name("Hot Chicks & Jesus").lineups.create!(time_period_id: feb.id)
 ["reese witherspoon", "katy perry", "stephen hawking", "eclipse", "iran", "fidel castro", "mila kunis", "angela merkel"].each do |art|
-	jesu2.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
+	jesu2.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
 end
 
-shad1 = Team.find_by_name("50 Shades of Wiki").lineups.create(time_period_id: jan.id)
+shad1 = Team.find_by_name("50 Shades of Wiki").lineups.create!(time_period_id: jan.id)
 ["fifty shades of grey", "julianne moore", "oculus rift", "exxonmobil", "kim jong-un", "wichita", "lithuania", "guantanamo bay naval base"].each do |art|
-	shad1.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
+	shad1.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
 end
-shad2 = Team.find_by_name("50 Shades of Wiki").lineups.create(time_period_id: feb.id)
+shad2 = Team.find_by_name("50 Shades of Wiki").lineups.create!(time_period_id: feb.id)
 ["fifty shades of grey", "julianne moore", "oculus rift", "exxonmobil", "kim jong-un", "wichita", "lithuania", "guantanamo bay naval base"].each do |art|
-	shad2.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
+	shad2.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
 end
 
-ecig1 = Team.find_by_name("E-Cigs in space").lineups.create(time_period_id: jan.id)
+ecig1 = Team.find_by_name("E-Cigs in space").lineups.create!(time_period_id: jan.id)
 ["benedict cumberbatch", "stephen colbert", "hydraulic fracturing", "asteroid", "hillary rodham clinton", "israel", "quantitative easing", "electronic cigarette"].each do |art|
-	ecig1.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
+	ecig1.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
 end
-ecig2 = Team.find_by_name("E-Cigs in space").lineups.create(time_period_id: feb.id)
+ecig2 = Team.find_by_name("E-Cigs in space").lineups.create!(time_period_id: feb.id)
 ["benedict cumberbatch", "stephen colbert", "hydraulic fracturing", "asteroid", "hillary rodham clinton", "israel", "quantitative easing", "electronic cigarette"].each do |art|
-	ecig2.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
+	ecig2.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
 end
 
-goog1 = Team.find_by_name("The Google, The Veto, and the Mr. Mom").lineups.create(time_period_id: jan.id)
+goog1 = Team.find_by_name("The Google, The Veto, and the Mr. Mom").lineups.create!(time_period_id: jan.id)
 ["michael keaton", "green day", "petroleum", "google", "veto", "iraq", "japan", "clint eastwood"].each do |art|
-	goog1.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
+	goog1.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
 end
-goog2 = Team.find_by_name("The Google, The Veto, and the Mr. Mom").lineups.create(time_period_id: feb.id)
+goog2 = Team.find_by_name("The Google, The Veto, and the Mr. Mom").lineups.create!(time_period_id: feb.id)
 ["michael keaton", "green day", "petroleum", "google", "veto", "iraq", "clint eastwood", "apple inc."].each do |art|
-	goog2.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
+	goog2.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
 end
 
-www1 = Team.find_by_name("Wiki Wiki What?").lineups.create(time_period_id: jan.id)
+www1 = Team.find_by_name("Wiki Wiki What?").lineups.create!(time_period_id: jan.id)
 ["chicago blackhawks", "nascar", "snow", "tesla motors", "fox news channel", "africa", "deaths in 2015", "walmart"].each do |art|
-	www1.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
+	www1.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
 end
-www2 = Team.find_by_name("Wiki Wiki What?").lineups.create(time_period_id: feb.id)
+www2 = Team.find_by_name("Wiki Wiki What?").lineups.create!(time_period_id: feb.id)
 ["chicago blackhawks", "nascar", "snow", "tesla motors", "fox news channel", "deaths in 2015", "walmart", "catherine, duchess of cambridge"].each do |art|
-	www2.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
+	www2.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
 end
 
-astr1 = Team.find_by_name("D's Asters").lineups.create(time_period_id: jan.id)
+astr1 = Team.find_by_name("D's Asters").lineups.create!(time_period_id: jan.id)
 ["spongebob squarepants", "liam neeson", "el niño", "koch industries", "john boehner", "ebola", "pope francis", "bashar al-assad"].each do |art|
-	astr1.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
+	astr1.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art], views: VIEWS["201501"][art], points: determine_points(VIEWS["201501"][art].to_f / VIEWS["201401"][art]))
 end
-astr2 = Team.find_by_name("D's Asters").lineups.create(time_period_id: feb.id)
+astr2 = Team.find_by_name("D's Asters").lineups.create!(time_period_id: feb.id)
 ["spongebob squarepants", "liam neeson", "el niño", "koch industries", "john boehner", "ebola", "pope francis", "bashar al-assad"].each do |art|
-	astr2.lineup_articles.create(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
+	astr2.lineup_articles.create!(article_id: Article.find_by_name(art).id, last_year_views: VIEWS["201401"][art])
 end
