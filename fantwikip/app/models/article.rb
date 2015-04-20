@@ -9,6 +9,7 @@
 #
 
 class Article < ActiveRecord::Base
-  belongs_to :team
   has_many :lineup_articles
+  has_many :lineups, through: :lineup_articles
+  has_many :teams, through: :lineups
 end
