@@ -9,13 +9,10 @@
 #  end_date   :date
 #  created_at :datetime
 #  updated_at :datetime
+#  active     :boolean          default(FALSE)
 #
 
 class TimePeriod < ActiveRecord::Base
-
-	def active?
-		Time.now > self.start_date && !expired?
-	end
 
 	def expired?
 		Time.now > self.end_date

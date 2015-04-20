@@ -1,0 +1,9 @@
+<h3>Existing Leagues</h3>
+<div id = "league-list">
+	<% @leagues.each do |league| %>
+		<p><%= link_to league.name, league %></p>
+	<% end %>
+</div>
+<div id = "new-league">
+	<p><%= link_to "Create a league", new_league_path %></p>
+</div>

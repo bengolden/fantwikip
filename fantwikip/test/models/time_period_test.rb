@@ -9,6 +9,7 @@
 #  end_date   :date
 #  created_at :datetime
 #  updated_at :datetime
+#  active     :boolean          default(FALSE)
 #
 
 require 'test_helper'

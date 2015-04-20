@@ -11,4 +11,12 @@ class LeaguesController < ApplicationController
 		end
 	end
 
+	def index
+		@leagues = League.all
+	end
+
+	def new
+		@league = League.new
+	end
+
 end
